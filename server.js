@@ -1,6 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const connectDB = require('./db/db');
+const cors = require('cors');
 const apiUserRoute = require('./routes/users');
 const apiProfileRoute = require('./routes/profiles');
 const apiPostRoute = require('./routes/posts');
@@ -13,12 +14,15 @@ const apiAdviceRoute = require('./routes/advice');
 const path = require('path');
 
 const app = express();
+const corsOptions = {
+	origin: ['http://localhost:5000', 'https;//newbsanity.netlify.app'],
+};
 
 // connect database
 connectDB();
 
 // init middleware
-
+app.use(cors(corsOptions));
 app.use(express.json({ extended: false }));
 
 //Define Routes
