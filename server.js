@@ -14,16 +14,16 @@ const apiAdviceRoute = require('./routes/advice');
 const path = require('path');
 
 const app = express();
-const corsOptions = {
-	origin: ['http://localhost:5000', 'https;//newbsanity.netlify.app'],
-};
+// const corsOptions = {
+// 	origin: ['http://localhost:5000', 'https;//newbsanity.netlify.app'],
+// };
 
 // connect database
 connectDB();
 
 // init middleware
-app.use(cors(corsOptions));
 app.use(express.json({ extended: false }));
+app.use(cors());
 
 //Define Routes
 
